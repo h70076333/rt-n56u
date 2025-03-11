@@ -553,6 +553,11 @@ void stop_dnsforwarder(void);
 void start_dnsforwarder(void);
 void restart_dnsforwarder(void);
 #endif
+#if defined(APP_ZEROTIER)
+void stop_zerotier(void);
+void start_zerotier(void);
+void restart_zerotier(void);
+#endif
 
 /* services_ex.c */
 int fill_dnsmasq_servers(void);
