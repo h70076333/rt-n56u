@@ -97,7 +97,7 @@ rules() {
 	done
 	nat_enable=$(nvram get zerotier_nat)
 	zt0=$(ifconfig | grep zt | awk '{print $1}')
-	logger -t "组网后台" "ht interface $zt0 is started!"
+	logger -t "组网后台" "zt interface $zt0 is started!"
 	del_rules
 	iptables -A INPUT -i $zt0 -j ACCEPT
 	iptables -A FORWARD -i $zt0 -o $zt0 -j ACCEPT
