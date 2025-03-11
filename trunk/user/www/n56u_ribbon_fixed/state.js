@@ -401,7 +401,15 @@ if (found_app_shadowsocks()){
 if (found_app_mentohust()){
 	tabtitle[13] = new Array("", "<#menu5_1_1#>","<#menu5_13_log#>");
 }
-
+if (found_app_aliddns()){
+	tabtitle[16] = new Array("", "<#menu5_30#>");
+}else if (found_app_ddnsto()){
+	tabtitle[16] = new Array("", "<#menu5_32_2#>");
+} else if (found_app_zerotier()){
+	tabtitle[16] = new Array("", "<#menu5_32#>");
+} else if (found_app_wireguard()){
+	tabtitle[16] = new Array("", "<#menu5_35#>");
+}
 //Level 3 Tab title
 
 tablink[0] = new Array("", "Advanced_Wireless2g_Content.asp", "Advanced_WGuest2g_Content.asp", "Advanced_WMode2g_Content.asp", "Advanced_ACL2g_Content.asp", "Advanced_WSecurity2g_Content.asp", "Advanced_WAdvanced2g_Content.asp");
@@ -426,6 +434,19 @@ if (found_app_shadowsocks()){
 	shadowsocks_array = new Array("","Shadowsocks.asp","Shadowsocks_log.asp");
 	tablink[12] = (shadowsocks_array);
 }
+if (found_app_aliddns()){
+	aliddns_array = new Array("","Advanced_aliddns.asp");
+	tablink[16] = (aliddns_array);
+}else if (found_app_ddnsto()){
+	ddnsto_array = new Array("","Advanced_ddnsto.asp");
+	tablink[16] = (ddnsto_array);
+}else if (found_app_zerotier()){
+	zerotier_array = new Array("","Advanced_vpnkey.asp");
+	tablink[16] = (zerotier_array);
+}else if (found_app_wireguard()){
+	wireguard_array = new Array("","Advanced_wireguard.asp");
+	tablink[16] = (wireguard_array);
+}
 if (found_app_mentohust()){
 	mentohust_array = new Array("","mentohust.asp","mentohust_log.asp");
 	tablink[13] = (mentohust_array);
@@ -446,10 +467,19 @@ if (found_app_shadowsocks()){
 	menuL2_title.push("<#menu5_16#>");
 } else menuL2_title.push("");
 
+if (found_app_aliddns()){
+	menuL2_title.push("<#menu5_30#>");
+} else if (found_app_ddnsto()){
+	menuL2_title.push("<#menu5_30#>");
+} else if (found_app_zerotier()){
+	menuL2_title.push("<#menu5_30#>");
+} else if (found_app_wireguard()){
+	menuL2_title.push("<#menu5_30#>");
+} else menuL2_title.push("");
+
 if (found_app_mentohust()){
 	menuL2_title.push("mentohust");
 } else menuL2_title.push("");
-
 
 menuL2_link  = new Array("", tablink[0][1], tablink[1][1], tablink[2][1], tablink[3][1], tablink[4][1], tablink[5][1], tablink[6][1], tablink[7][1], support_2g_radio() ? tablink[8][1] : "Main_EStatus_Content.asp", tablink[9][1]);
 if (found_app_scutclient()){
@@ -462,6 +492,16 @@ if (found_app_dnsforwarder()){
 
 if (found_app_shadowsocks()){
 	menuL2_link.push(shadowsocks_array[1]);
+} else menuL2_link.push("");
+
+if (found_app_aliddns()){
+	menuL2_link.push(aliddns_array[1]);
+} else if (found_app_ddnsto()){
+	menuL2_link.push(ddnsto_array[1]);
+} else if (found_app_zerotier()){
+	menuL2_link.push(zerotier_array[1]);
+} else if (found_app_wireguard()){
+	menuL2_link.push(wireguard_array[1]);
 } else menuL2_link.push("");
 
 if (found_app_mentohust()){
@@ -1329,6 +1369,154 @@ function removeFromLocalStorage(name){
     if(isLocalStorageAvailable()){
         localStorage.removeItem(name);
     }
+}
+
+//WEB自定义菜单
+var w_ai = '<% nvram_get_x("", "w_ai"); %>';
+var w_vpn_s = '<% nvram_get_x("", "w_vpn_s"); %>';
+var w_vpn_c = '<% nvram_get_x("", "w_vpn_c"); %>';
+var w_wnet = '<% nvram_get_x("", "w_wnet"); %>';
+var w_sys = '<% nvram_get_x("", "w_sys"); %>';
+var w_usb = '<% nvram_get_x("", "w_usb"); %>';
+var w_net = '<% nvram_get_x("", "w_net"); %>';
+var w_log = '<% nvram_get_x("", "w_log"); %>';
+var w_scu = '<% nvram_get_x("", "w_scu"); %>';
+var w_dnsf = '<% nvram_get_x("", "w_dnsf"); %>';
+var w_ss = '<% nvram_get_x("", "w_ss"); %>';
+var w_men = '<% nvram_get_x("", "w_men"); %>';
+var w_adbyby = '<% nvram_get_x("", "w_adbyby"); %>';
+var w_pdnsd = '<% nvram_get_x("", "w_pdnsd"); %>';
+var w_aliddns = '<% nvram_get_x("", "w_aliddns"); %>';
+var w_frp = '<% nvram_get_x("", "w_frp"); %>';
+var w_caddy = '<% nvram_get_x("", "w_caddy"); %>';
+var w_wyy = '<% nvram_get_x("", "w_wyy"); %>';
+var w_aldriver = '<% nvram_get_x("", "w_aldriver"); %>';
+var w_uuplugin = '<% nvram_get_x("", "w_uuplugin"); %>';
+var w_lucky = '<% nvram_get_x("", "w_lucky"); %>';
+var w_wxsend = '<% nvram_get_x("", "w_wxsend"); %>';
+var w_cloudflared = '<% nvram_get_x("", "w_cloudflared"); %>';
+var w_vnts = '<% nvram_get_x("", "w_vnts"); %>';
+var w_vntcli = '<% nvram_get_x("", "w_vntcli"); %>';
+var w_natpierce = '<% nvram_get_x("", "w_natpierce"); %>';
+var w_tailscale = '<% nvram_get_x("", "w_tailscale"); %>';
+var w_alist = '<% nvram_get_x("", "w_alist"); %>';
+var w_cloudflare = '<% nvram_get_x("", "w_cloudflare"); %>';
+
+if (w_ai==0){
+	menuL1_link[2] = "";
+	menuL1_title[2] = "";
+}
+if (w_vpn_s==0){
+	menuL1_link[3] = "";
+	menuL1_title[3] = "";
+}
+if (w_vpn_c==0){
+	menuL1_link[4] = "";
+	menuL1_title[4] = "";
+}
+if (w_wnet==0){
+	menuL1_link[5] = "";
+	menuL1_title[5] = "";
+}
+if (w_sys==0){
+	menuL1_link[6] = "";
+	menuL1_title[6] = "";
+}
+if (w_usb==0){
+	menuL2_link[6] = "";
+	menuL2_title[6] = "";
+}
+if (w_net==0){
+	menuL2_link[9] = "";
+	menuL2_title[9] = "";
+}
+if (w_log==0){
+	menuL2_link[10] = "";
+	menuL2_title[10] = "";
+}
+if (w_scu==0){
+	menuL2_link[11] = "";
+	menuL2_title[11] = "";
+}
+if (w_dnsf==0){
+	menuL2_link[12] = "";
+	menuL2_title[12] = "";
+}
+if (w_ss==0){
+	menuL2_link[13] = "";
+	menuL2_title[13] = "";
+}
+if (w_men==0){
+	menuL2_link[14] = "";
+	menuL2_title[14] = "";
+}
+if (w_adbyby==0){
+	menuL2_link[15] = "";
+	menuL2_title[15] = "";
+}
+if (w_pdnsd==0){
+	menuL2_link[16] = "";
+	menuL2_title[16] = "";
+}
+if (w_aliddns==0){
+	menuL2_link[17] = "";
+	menuL2_title[17] = "";
+}
+if (w_frp==0){
+	menuL2_link[18] = "";
+	menuL2_title[18] = "";
+}
+if (w_caddy==0){
+	menuL2_link[19] = "";
+	menuL2_title[19] = "";
+}
+if (w_wyy==0){
+	menuL2_link[20] = "";
+	menuL2_title[20] = "";
+}
+if (w_aldriver==0){
+	menuL2_link[21] = "";
+	menuL2_title[21] = "";
+}
+if (w_uuplugin==0){
+	menuL2_link[22] = "";
+	menuL2_title[22] = "";
+}
+if (w_lucky==0){
+	menuL2_link[23] = "";
+	menuL2_title[23] = "";
+}
+if (w_wxsend==0){
+	menuL2_link[24] = "";
+	menuL2_title[24] = "";
+}
+if (w_cloudflared==0){
+	menuL2_link[25] = "";
+	menuL2_title[25] = "";
+}
+if (w_vnts==0){
+	menuL2_link[26] = "";
+	menuL2_title[26] = "";
+}
+if (w_vntcli==0){
+	menuL2_link[27] = "";
+	menuL2_title[27] = "";
+}
+if (w_natpierce==0){
+	menuL2_link[28] = "";
+	menuL2_title[28] = "";
+}
+if (w_tailscale==0){
+	menuL2_link[29] = "";
+	menuL2_title[29] = "";
+}
+if (w_alist==0){
+	menuL2_link[30] = "";
+	menuL2_title[30] = "";
+}
+if (w_cloudflare==0){
+	menuL2_link[31] = "";
+	menuL2_title[31] = "";
 }
 
 (function($){
