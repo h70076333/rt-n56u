@@ -3259,21 +3259,6 @@ apply_cgi(const char *url, webs_t wp)
 		if (get_login_safe())
 			sys_result = doSystem("/sbin/ovpn_export_client '%s' %s %d", common_name, rsa_bits, days_valid);
 #endif
-
-#if defined(APP_ZEROTIER)
-		system("/usr/bin/zerotier.sh start &");
-#endif
-		return 0;
-	}
-	else if (!strcmp(value, " Updatezerotier "))
-	{
-#if defined(APP_ZEROTIER)
-		system("/usr/bin/zerotier.sh update &");
-#endif
-		return 0;
-	}
-	else if (!strcmp(value, " Restartvnts "))
-	{
 		websWrite(wp, "{\"sys_result\": %d}", sys_result);
 		return 0;
 	}
