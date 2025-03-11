@@ -1,4 +1,4 @@
-name: BELL-A-040W-Q
+name: K2P
 on: 
   release:
     types: [published]
@@ -37,7 +37,7 @@ jobs:
     
     - name: Build Firmware
       env:
-        TNAME: BELL-A-040W-Q
+        TNAME: K2P
       run: |
         cd /opt/padavan/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
