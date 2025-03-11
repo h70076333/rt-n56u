@@ -2054,6 +2054,7 @@ static int dnsforwarder_status_hook(int eid, webs_t wp, int argc, char **argv)
 }
 
 #endif
+
 #if defined (APP_ZEROTIER)
 static int zerotier_status_hook(int eid, webs_t wp, int argc, char **argv)
 {
