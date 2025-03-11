@@ -554,6 +554,19 @@ struct nvram_pair router_defaults[] = {
 	{ "dns_forwarder_server", "8.8.4.4:53" },
 #endif
 
+#if defined(APP_ZEROTIER)
+	/*Zerotier*/
+	{ "zerotier_enable", "0" },
+	{ "zerotier_id", "" },
+	{ "zerotier_nat", "0" },
+	{ "zerotier_secret", "" },
+	{ "zero_staticnum_x", "0" },
+	{ "zero_afykey", "" },
+	{ "zero_afynen", "" },
+	{ "afycx_enable", "0" },
+	{ "gecoac_enable", "0" },
+#endif
+
 #if defined(APP_SHADOWSOCKS)
 	/* shadowsocks */
 	{ "ss_type", "0" }, //0=ss, 1=ssr
