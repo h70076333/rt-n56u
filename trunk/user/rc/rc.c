@@ -1713,6 +1713,12 @@ main(int argc, char **argv)
 	else if (!strcmp(base, "run_firefly")) {
 		restart_itunes();
 	}
+#endif		
+#if defined(APP_ZEROTIER)
+		else if (strcmp(entry->d_name, RCN_RESTART_ZEROTIER) == 0)
+		{
+			restart_zerotier();
+		}		
 #endif
 #if defined(APP_TRMD)
 	else if (!strcmp(base, "run_transmission")) {
